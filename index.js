@@ -6,7 +6,6 @@ const { ObjectId } = require('mongodb'); // To handle ObjectId in MongoDB
 // MongoDB connection string
 const mongoURI = 'mongodb+srv://shiwanshaggarwal2004:YPvS4SDJwKc59iUv@cluster0.ueomq.mongodb.net/test2?retryWrites=true&w=majority';
 
-
 // Connect to MongoDB
 mongoose
     .connect(mongoURI, {
@@ -23,9 +22,26 @@ mongoose
 const app = express();
 app.use(bodyParser.json()); // Middleware to parse incoming JSON data
 
-// Test route to ensure the server is running
+// Home route to display some text
 app.get('/', (req, res) => {
-    res.send('Server is running!');
+    const htmlContent = `
+        <html>
+            <head>
+                <title>Home Page</title>
+            </head>
+            <body>
+                <h1>Welcome to the MongoDB Express Server!</h1>
+                <p>This server allows you to perform CRUD operations on MongoDB collections.</p>
+                <p>Use the following endpoints:</p>
+                <ul>
+                    <li><strong>POST /insert:</strong> Insert a document into a collection.</li>
+                    <li><strong>GET /getAll:</strong> Retrieve all documents from a collection.</li>
+                    <li><strong>PUT /edit:</strong> Update a document in a collection.</li>
+                </ul>
+            </body>
+        </html>
+    `;
+    res.send(htmlContent);
 });
 
 // POST endpoint to insert a document
