@@ -1,0 +1,11 @@
+curl -Method POST http://localhost:3000/insert `
+     -Headers @{"Content-Type"="application/json"} `
+     -Body '{
+         "collectionName": "your_collection_name",
+         "document": {
+             "key1": "value1",
+             "key2": "value2"
+         }
+     }'
+
+     Invoke-WebRequest -Uri http://localhost:3000/edit `   -Method PUT `   -Headers @{ "Content-Type" = "application/json" } `   -Body '{"collectionName": "your_collection_name", "documentId": "676268a48d42d3c4e864b734", "updates": { "name": "Updated Name", "email": "updated_email@example.com" }}'
